@@ -1,0 +1,64 @@
+"  My install Plugin
+
+set rtp+=~/.vim/bundle/Vundle.vim "         Plugin manager starts
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'preservim/nerdtree'
+Plugin 'jiangmiao/auto-pairs'
+
+call vundle#end()            
+filetype plugin indent on    "              Plugin manager ends
+
+
+
+"      *****My custom setting*****
+
+set autoindent
+set smartindent
+set number
+set mouse=a
+set hidden
+set nowrap
+syntax on
+
+
+
+"      *****My custom mapping*****
+
+
+autocmd filetype cpp nnoremap <C-j> :w<cr>:let @" = expand("%:p")<cr>:!gnome-terminal -e '''bash -c "'~/cpp.sh' '<C-r>"'"'''<cr>:!clear<cr><cr>
+autocmd filetype cpp inoremap <C-j> <esc>:w<cr>:let @" = expand("%:p")<cr>:!gnome-terminal -e '''bash -c "'~/cpp.sh' '<C-r>"'"'''<cr>:!clear<cr><cr>
+
+
+map <C-k> <esc>:NERDTreeToggle<cr>
+nmap <leader>sop :source %<cr>
+
+" old map: nmap dm ddO
+" new map
+nmap dm ddk$a<cr>
+
+" open terminal right side
+nmap tt <esc>:rightb vert terminal<cr>
+
+" copy, cut and paste
+vmap <C-c> "+y
+vmap <C-x> "+d
+vmap <C-v> d"+P
+nmap <C-p> "+p
+imap <C-p> <esc>"+P
+
+" delete select block
+vnoremap <BS> x
+
+" select all
+imap <C-a> <esc>gg<S-v><S-g>
+nmap <C-a> gg<S-v><S-g>
+
+
+imap <C-s> <esc>:w
+nmap <C-s> :w<cr><i>
+
+" note : 
+"      repeated word multiple times: <esc><C-v>[select block]<s>[write something]<esc> 
+
